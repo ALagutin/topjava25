@@ -1,10 +1,5 @@
-body {
-    /*background-color: #e9ecef;*/
-}
-
 table {
     border-collapse: collapse;
-    /*padding: 50px;*/
 }
 
 td, th {
@@ -23,6 +18,17 @@ thead {
 
 .green {
     color: green;
+}
+
+dt {
+    display: inline-block;
+    width: 120px;
+}
+
+dd {
+    display: inline-block;
+    /*margin-left: 8px;*/
+    /*vertical-align: top;*/
 }
 
 /*tbody tr:nth-child(odd){*/

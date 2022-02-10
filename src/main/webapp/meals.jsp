@@ -6,21 +6,23 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset=ru.javawebinar.topjava.model.MealTo"utf-8">
-    <title>meals</title>
+    <meta charset="utf-8">
+    <title>Meal list</title>
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h3><a href="index.html">Home</a></h3>
 <hr>
 <h2>Meals</h2>
-
+<p><a href="meals?action=insert">Add Meal</a></p>
 <table>
     <thead>
     <tr>
         <th>Date</th>
         <th>Description</th>
         <th>Calories</th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -38,6 +40,8 @@
             </td>
             <td>${meal.description}</td>
             <td>${meal.calories}</td>
+            <td><a href="meals?action=edit&id=${meal.id}">update</a></td>
+            <td><a href="meals?action=delete&id=${meal.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
