@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="meal" scope="request" type="ru.javawebinar.topjava.model.MealTo"/>
+<jsp:useBean id="meal" class="ru.javawebinar.topjava.model.Meal" scope="request"/>
 <html>
 <head>
     <title>Meal</title>
@@ -9,8 +9,7 @@
 <body>
 <h3><a href="index.html">Home</a></h3>
 <hr>
-<h2>Edit meal</h2>
-</body>
+<h2>${param.action == 'insert' ? 'Create meal' : 'Edit meal'}</h2>
 <form action="meals" method="post">
     <label>
         <input name="id" value="<c:out value="${meal.id}"/>" style="display: none">
@@ -36,4 +35,5 @@
     <button type="submit">Save</button>
     <button onclick="window.history.back()" type="button">Cancel</button>
 </form>
+</body>
 </html>
