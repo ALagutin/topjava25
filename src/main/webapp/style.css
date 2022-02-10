@@ -1,0 +1,33 @@
+body {
+    /*background-color: #e9ecef;*/
+}
+
+table {
+    border-collapse: collapse;
+    /*padding: 50px;*/
+}
+
+td, th {
+    border: 2px solid black;
+    padding: 8px;
+}
+
+thead {
+    text-align: center;
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+/*tbody tr:nth-child(odd){*/
+/*    background: #C9E4F6;*/
+/*}*/
+/*tbody tr:nth-child(even){*/
+/*    background: #B4DAF2;*/
+/*}*/
