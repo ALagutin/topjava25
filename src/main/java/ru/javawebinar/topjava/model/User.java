@@ -132,6 +132,7 @@ public class User extends AbstractNamedEntity {
                 ", enabled=" + enabled +
                 ", roles=" + roles +
                 ", caloriesPerDay=" + caloriesPerDay +
+//                ", registered=" + registered +
                 '}';
     }
 }
