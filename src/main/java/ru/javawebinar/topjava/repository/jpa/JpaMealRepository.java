@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.repository.jpa;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.User;
@@ -19,7 +20,7 @@ public class JpaMealRepository implements MealRepository {
     private EntityManager em;
 
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.DEFAULT)
     public Meal save(Meal meal, int userId) {
         meal.setUser(em.getReference(User.class, userId));
         if (meal.isNew()) {
