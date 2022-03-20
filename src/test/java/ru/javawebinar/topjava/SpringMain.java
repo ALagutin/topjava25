@@ -10,11 +10,9 @@ import ru.javawebinar.topjava.web.meal.MealRestController;
 import java.util.Arrays;
 
 public class SpringMain {
-
     public static void main(String[] args) {
         // java 7 automatic resource management (ARM)
         System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "datajpa, postgres");
-
         try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("classpath:spring/spring-app.xml", "classpath:spring/spring-db.xml")) {
             Arrays.stream(appCtx.getBeanDefinitionNames()).forEach(System.out::println);
 //            AdminRestController adminUserController = appCtx.getBean(AdminRestController.class);
