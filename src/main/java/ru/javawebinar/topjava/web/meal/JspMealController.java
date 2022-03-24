@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.service.MealService;
 
@@ -19,38 +20,24 @@ import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalDate;
 import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalTime;
 
 @Controller
+@RequestMapping("meals")
 public class JspMealController extends AbstractMealController {
 
     public JspMealController(MealService service) {
         super(service);
     }
 
-    @GetMapping("meals")
+    @GetMapping()
     public String GetMeals(HttpServletRequest request, Model model) {
         String action = request.getParameter("action");
         System.out.println(action);
 
-        switch (action == null ? "all" : action) {
-            case "create" -> {
-                return creatMeal(model);
-            }
-            case "update" -> {
-                return updateMeal(request, model);
-            }
-            case "delete" -> {
-                return deleteMeal(request, model);
-            }
-            case "filter" -> {
-                return filterMeals(request, model);
-            }
-            default -> {
-                model.addAttribute("meals", getAll());
-                return "meals";
-            }
-        }
+        model.addAttribute("meals", getAll());
+        return "meals";
+
     }
 
-    @PostMapping("meals")
+    @PostMapping()
     public String PostMeals(HttpServletRequest request) {
         Meal meal = new Meal(
                 LocalDateTime.parse(request.getParameter("dateTime")),
@@ -62,25 +49,29 @@ public class JspMealController extends AbstractMealController {
         } else {
             create(meal);
         }
-        return "redirect:meals";
+        return "redirect:.";
     }
 
+    @GetMapping("create")
     public String creatMeal(Model model) {
         model.addAttribute("meal", new Meal(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "", 1000));
         return "mealForm";
     }
 
+    @GetMapping("update")
     public String updateMeal(HttpServletRequest request, Model model) {
         model.addAttribute("meal", get(getId(request)));
         return "mealForm";
     }
 
-    public String deleteMeal(HttpServletRequest request, Model model) {
+    @GetMapping("delete")
+    public String deleteMeal(HttpServletRequest request) {
         int id = getId(request);
         delete(id);
-        return "redirect:meals";
+        return "redirect:.";
     }
 
+    @GetMapping("filter")
     public String filterMeals(HttpServletRequest request, Model model) {
         LocalDate startDate = parseLocalDate(request.getParameter("startDate"));
         LocalDate endDate = parseLocalDate(request.getParameter("endDate"));
