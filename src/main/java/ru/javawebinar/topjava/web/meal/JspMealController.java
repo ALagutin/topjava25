@@ -18,7 +18,7 @@ import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalDate;
 import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalTime;
 
 @Controller
-@RequestMapping("/meals")
+@RequestMapping("/meals123")
 public class JspMealController extends AbstractMealController {
 
     @GetMapping("/delete")
